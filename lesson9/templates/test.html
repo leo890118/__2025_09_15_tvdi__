@@ -7,37 +7,17 @@
 
 <body>
 
-    <div>
-        <canvas id="myChart" width="800" height="500"></canvas>
+    <h1>我的圖表</h1>
+
+    <div class="chart-container">
+        <canvas id="myChartCanvas" width="800" height="500"></canvas>
     </div>
 
     <script src="{{ url_for('static',filename='vendor/chart.js/chart.umd.js') }}"></script>
 
     <script>
         debugger;
-        const ctx = document.getElementById('myChart');
-        console.log("Hello! Javascript!")
-        debugger;
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: false,
-                maintainAspectRatio:false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+        console.log("Chart.js 已經載入，現在可以使用 'Chart' 這個物件了。")
     </script>
 
 </body>

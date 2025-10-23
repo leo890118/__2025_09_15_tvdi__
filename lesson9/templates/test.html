@@ -2,25 +2,38 @@
 <html>
 
 <head>
-    <title>範例1</title>
+    <title>Chart.js 散點圖(Scatter) 範例</title>
+    <style type="text/css">
+        /*給圖表一個固定的繪圖區域*/
+        .chart-container{
+            position: relative;
+            width: 80vw;
+            height: 60 vh;
+            margin: 20px auto; /*置中*/
+            border: 1px solid #ddd
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Chart.js 已經載入，現在可以使用 'Chart' 這個物件了。")
+            const canvasElement = document.getElementById('myChartCanvas')
+            const ctx = canvasElement.getContext('2d')
+            console.log(ctx)
+        })
+    </script>
 </head>
 
 <body>
 
-    <h1>我的圖表</h1>
+    <h1>範例:學生身高 vs 體重 散點圖</h1>
 
     <div class="chart-container">
-        <canvas id="myChartCanvas" width="800" height="500"></canvas>
+        <canvas id="myChartCanvas"></canvas>
     </div>
 
     <script src="{{ url_for('static',filename='vendor/chart.js/chart.umd.js') }}"></script>
 
-    <script>
-        console.log("Chart.js 已經載入，現在可以使用 'Chart' 這個物件了。")
-        const canvasElement = document.getElementById('myChartCanvas')
-        const ctx = canvasElement.getContext('2d')
-        console.log(ctx)
-    </script>
+    
 
 </body>
 

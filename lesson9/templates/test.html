@@ -16,8 +16,10 @@
     <script src="{{ url_for('static',filename='vendor/chart.js/chart.umd.js') }}"></script>
 
     <script>
-        debugger;
         console.log("Chart.js 已經載入，現在可以使用 'Chart' 這個物件了。")
+        const canvasElement = document.getElementById('myChartCanvas')
+        const ctx = canvasElement.getContext('2d')
+        console.log(ctx)
     </script>
 
 </body>

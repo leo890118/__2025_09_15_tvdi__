@@ -61,3 +61,8 @@ https://www.youtube.com/watch?v=iPyBkw3Dihk
 https://www.youtube.com/watch?v=fEIeN8McGKs
 
 ---
+
+## 2025_10_23_早上
+https://www.youtube.com/watch?v=urGzHpVzMcQ
+
+---

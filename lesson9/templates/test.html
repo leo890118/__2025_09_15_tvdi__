@@ -8,7 +8,7 @@
         .chart-container{
             position: relative;
             width: 80vw;
-            height: 60 vh;
+            height: 600px;
             margin: 20px auto; /*置中*/
             border: 1px solid #ddd
         }
@@ -59,6 +59,32 @@
                             pointHoverRadius: 10 //滑鼠移上去時的點的大小
                         }
                     ]
+                },
+                //options物件,設定圖表的外觀
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+
+                    //座標軸設定
+                    scales:{
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                display: true,
+                                text: '身高 (cm)',
+                                font: { size:16 }
+                            }
+                        },
+                        y: {
+                            title:{
+                                display: true,
+                                text: '體重 (kg)',
+                                font: { size:16 }
+                            }
+
+                        }
+                    }
                 }
             })
             

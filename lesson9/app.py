@@ -1,15 +1,16 @@
-from flask import Flask,render_template, jsonify
+from flask import Flask,render_template, jsonify, Response
 from sklearn.datasets import fetch_california_housing
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
 import numpy as np
+import json
 
 app = Flask(__name__)
-# 讓app輸出json時,繁體中文不會出現亂碼
-app.config['JSON_AS_ASCII'] = False
-# 讓app輸出json時,繁體中文不會出現亂碼,支援新的flask版本
-app.config['JSON_UTF8'] = True
+
+
+# 自定義JSON序列化設定
+app.json.ensure_ascii = False
 
 
 @app.route("/")
@@ -114,8 +115,8 @@ def regression_data():
             {
                 "success": False,
                 "error": str(e)
-            }
-        ), 500
+            }, 500
+        )
 
     
 

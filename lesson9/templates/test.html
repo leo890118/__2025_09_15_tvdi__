@@ -84,6 +84,26 @@
                             }
 
                         }
+                    },
+                    //插件 (plugins)設定,例如標題和提示
+                    plugins: {
+                        title: {
+                            display:true,
+                            text: '身高和體重的關係',
+                            font: { size: 20},
+                            padding: 20
+                        },
+                        tooltip:{
+                            callbacks:{
+                                label: function(context){
+                                    //console.log(context);
+                                    let label = context.dataset.label || '';
+                                    let xVal = context.parsed.x;
+                                    let yVal = context.parsed.y;
+                                    return `${label}: ${xVal} cm, ${yVal} kg`
+                                }
+                            }
+                        }
                     }
                 }
             })

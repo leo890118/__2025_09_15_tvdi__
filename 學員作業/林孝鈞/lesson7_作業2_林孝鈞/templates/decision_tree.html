@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="bg-light">
+    <div class="container py-5">
+
+        <!-- 頁面標題 -->
+        <div class="text-center mb-5 bgc-liner">
+            <h1 class="fw-bold ">決策樹分類</h1>
+        </div>
+
+        <!-- 簡介 -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h5 mb-0">簡介</h2>
+            </div>
+            <div class="card-body">
+                <ol class="mb-0">
+                    <li>機器學習中，決策樹是一個預測模型；他代表的是對象屬性與對象值之間的一種映射關係。</li>
+                    <li>樹中每個節點表示某個對象，根節點代表所有對象而每個分叉路徑則代表某個可能的屬性值，而每個葉節點則對應從根節點到該葉節點所經歷的路徑所表示的對象的值。</li>
+                    <li>決策樹僅有單一輸出，若欲有複數輸出，可以建立獨立的決策樹以處理不同輸出。</li>
+                    <li>數據挖掘中決策樹是一種經常要用到的技術，可以用於分析數據，同樣也可以用來作預測。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 類型 -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h2 class="h5 mb-0">類型</h2>
+            </div>
+            <div class="card-body">
+                <ol class="mb-0">
+                    <li>機器學習中，決策樹是一個預測模型；他代表的是對象屬性與對象值之間的一種映射關係。</li>
+                    <li>樹中每個節點表示某個對象，根節點代表所有對象而每個分叉路徑則代表某個可能的屬性值，而每個葉節點則對應從根節點到該葉節點所經歷的路徑所表示的對象的值。</li>
+                    <li>決策樹僅有單一輸出，若欲有複數輸出，可以建立獨立的決策樹以處理不同輸出。</li>
+                    <li>數據挖掘中決策樹是一種經常要用到的技術，可以用於分析數據，同樣也可以用來作預測。</li>
+                </ol>
+            </div>
+        </div>
+        <!-- 應用場景列表 -->
+        <div class="container card mb-4 mt-4 p-3">
+            <div>
+                <div class="card-header bg-primary text-white">
+                    <h3>{{ tree_info.algorithm }}</h3>
+                </div>
+                <div class="card-body">
+                    <!-- 手機版導覽切換按鈕 -->
+                    <button class="nav-toggle-decision_tree" aria-label="顯示導覽選單">
+                        <svg class="hamburger-icon" viewBox="0 0 100 100" width="32" height="32">
+                            <rect class="line top" width="80" height="10" x="10" y="25" rx="5"></rect>
+                            <rect class="line middle" width="80" height="10" x="10" y="45" rx="5"></rect>
+                            <rect class="line bottom" width="80" height="10" x="10" y="65" rx="5"></rect>
+                        </svg>
+                    </button>
+                    <!-- 手機版導覽切換按鈕 -->
+                    <div class="show">
+                        <h5>📘 應用場景：</h5>
+                        <ul class="list-group mb-3">
+                            {% for item in tree_info.applications %}
+                            <li class="list-group-item">{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <h5>🌟 優點：</h5>
+                    <ul class="list-group">
+                        {% for p in tree_info.pros %}
+                        <li class="list-group-item">{{ p }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表單區 -->
+        <div class="card mb-4 mt-4 p-3">
+            <div class="card-body">
+                <h5>輸入資料特徵數量</h5>
+                <form method="POST" action="/decision_tree">
+                    <div class="mb-3">
+                        <input type="number" name="feature_count" class="form-control" placeholder="請輸入特徵數量" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">送出</button>
+                </form>
+            </div>
+
+            <!-- 顯示使用者輸入 -->
+            {% if feature_count %}
+            <div class="alert alert-success mt-3">
+                您輸入的特徵數量為：{{ feature_count }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- 決策樹模型 -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h2 class="h5 mb-0">一個決策樹包含三種類型的節點：</h2>
+            </div>
+            <div class="card-body">
+                <ol class="mb-0">
+                    <img src="{{ url_for('static', filename='Image/Decision_tree_model/Decision-Tree-Elements.png') }}"
+                        alt="">
+                    <li>決策節點：通常用矩形框來表示</li>
+                    <li>機會節點：通常用圓圈來表示</li>
+                    <li>終結點：通常用三角形來表示</li>
+                </ol>
+            </div>
+        </div>
+        <!-- 優點 -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h2 class="h5 mb-0">決策樹的優點</h2>
+            </div>
+
+            <div class="card-body">
+                <ol class="mb-0">
+                    <li>決策樹易於理解和實現，人們在通過解釋後都有能力去理解決策樹所表達的意義。</li><img
+                        src="{{ url_for('static', filename='Image/Decision_tree_model/Decision_tree_model.png') }}"
+                        alt="">
+                    <li>數據的準備往往是簡單或者是不必要的，不需去掉多餘或空白的屬性。</li>
+                    <li>能夠同時處理數據型和常規型屬性。</li>
+                    <li>是一個白盒模型，容易轉換成邏輯表達式。</li>
+                    <li>易於通過靜態測試來對模型進行評測，可測量可信度。</li>
+                    <li>能在相對短的時間內對大型數據源得出效果良好的結果。</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 缺點 -->
+        <div class="card mb-5 shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h2 class="h5 mb-0">決策樹的缺點</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-0">對於那些各類別樣本數量不一致的數據，決策樹中的信息增益結果容易偏向具有更多數值的特徵。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/decision_tree.css')}}" />
+{% endblock %}
+{% block js %}
+{{ super() }}
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static',filename='js/decision_tree.js') }}"></script>
+{% endblock %}

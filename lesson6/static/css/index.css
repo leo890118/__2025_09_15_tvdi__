@@ -150,7 +150,7 @@ footer {
     .row {
         flex-direction: column;
     }
-    
+
     .col-main,
     .col-sidebar {
         width: 100%;

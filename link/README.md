@@ -53,3 +53,19 @@ https://www.youtube.com/watch?v=BqEzsJtDi_0
 https://www.youtube.com/watch?v=OhFxOujnBAg
 
 ---
+
+## 2025_10_20_早上
+https://www.youtube.com/watch?v=iPyBkw3Dihk
+
+## 2025_10_20_下午
+https://www.youtube.com/watch?v=fEIeN8McGKs
+
+---
+
+## 2025_10_23_早上
+https://www.youtube.com/watch?v=urGzHpVzMcQ
+
+## 2025_10_23_下午
+https://www.youtube.com/watch?v=qWH11YXOYrY
+
+---

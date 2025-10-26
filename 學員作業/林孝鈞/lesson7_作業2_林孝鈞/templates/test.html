@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block title %}
+test
+{% endblock %}
+{% block head %}
+{{ super() }}
+  <style>
+
+
+    .title_content {
+      border-bottom: 2px solid #4d6cf7;
+    }
+
+    .card {
+      border-left: 40px solid #b0bcf3;
+      width: 600px;
+      margin: 20px;
+      border-radius: 1rem;
+
+      min-width: 20%;
+      padding: 10px 20px 20px 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card>h1 {}
+
+    .card>button {}
+
+    ng-content>h2,
+    ng-content>p {
+      margin-bottom: 20px;
+    }
+
+  .answer-content {
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .visible {
+    display: block;
+  }
+  </style>
+
+{% endblock %}
+{% block content %}
+<!-- test -->
+<div class="card">
+  <h1 id="title_box" class="title_content">這是題目</h1>
+  <h2 id="answer_box" class="answer-content">這是答案</h2>
+  <button class="toggle-button">顯示答案</button>
+</div>
+  <!-- test -->
+  <mat-card>
+    <div class="card_box">
+      <ng-content>
+        <img src="{{ url_for('static', filename='img/decision_tree_ex1.png') }}" alt="" />
+        <h2>圖片的文字</h2>
+        <p>圖片的文字內容</p>
+      </ng-content>
+      <button id="myButton">點我改變標題</button>
+    </div>
+  </mat-card>
+
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+  <script>
+
+    //第1部分的 JS 
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector(".toggle-button");
+    const answerBox = document.querySelector("#answer_box");
+
+    button.addEventListener("click", function () {
+      answerBox.classList.toggle("visible");
+
+      if (answerBox.classList.contains("visible")) {
+        button.textContent = "隱藏答案";
+      } else {
+        button.textContent = "顯示答案";
+      }
+    });
+  });
+    //第2部分的 JS 
+    // let title = document.getElementById("title");
+    // let button = document.getElementById("myButton");
+    // let card_box = document.getElementById("card_box");
+    // button.addEventListener("click", function () {
+    //   title.style.fontSize = "36px";
+    //   title.innerHTML = "";
+    // });
+
+    // 取得容器
+    const card_box = document.querySelector(".card_box");
+
+    // 產生整個含 button 的內容
+    card_box.innerHTML = `
+    <div class="card">
+      <img src="{{ url_for('static', filename='img/decision_tree_ex1.png') }}" alt="">
+      <h2>圖片的文字</h2>
+      <p>圖片的文字內容</p>
+      <button class="show-more-btn">顯示更多</button>
+    </div>
+  `;
+
+    // 找出新加入的按鈕
+    const button_second = document.querySelector(".show-more-btn");
+
+    // 加上監聽事件
+    button_second.addEventListener("click", function () {
+      card_box.innerHTML = `
+      <div class="card">
+        <img src="{{ url_for('static', filename='img/decision_tree_ex2.png') }}" alt="">
+        <h2>新圖片的標題</h2>
+        <p>這是點擊後換成的內容</p>
+        <button class="show-more-btn">返回</button>
+      </div>
+    `;
+
+      // ⚠️ 重新抓取新生成的按鈕（因為上一個按鈕被取代掉了）
+      const newButton = document.querySelector(".show-more-btn");
+      newButton.addEventListener("click", function () {
+        location.reload(); // 或換回前一個內容
+      });
+    });
+  </script>
+
+{% endblock %}

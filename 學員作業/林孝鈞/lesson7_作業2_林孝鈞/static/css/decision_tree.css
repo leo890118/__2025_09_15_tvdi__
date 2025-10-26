@@ -1,0 +1,46 @@
+.container{
+    
+}
+
+
+div>div>ol>img{
+    float: right;
+    width: 60%;
+}
+
+.container>div>.card-body>.nav-toggle-decision_tree{
+    position: absolute;
+    top: 43px;
+    right: 45px ;
+}
+.container>div.card-body>.show {
+    
+    display:inline;
+}
+.container>div>.card-body>.none {
+    
+    display:none;
+}
+
+.nav-toggle-decision_tree {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+
+.nav-toggle-decision_tree:hover {
+    background-color: rgba(255, 255, 255, 0.574);
+}
+
+.hamburger-icon {
+    width: 32px;
+    height: 32px;
+}

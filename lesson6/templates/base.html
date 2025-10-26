@@ -1,75 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 3ec8829d9406606a570eb7bce9756ae249839fdb
->>>>>>> 2d6d9caa04d49514e0d6805b3495eaccc9b46aa0
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Python機器學習課程{% endblock %}</title>
     {# 使用 Flask 靜態資源 url_for 連結到 /static/css/styles.css #}
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}?v=1">
     <!-- 已移除內嵌 <style>，相關導覽列樣式已移至 static/css/index.css -->
 </head>
-=======
-<<<<<<< HEAD
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}?v=1">
-    <!-- 已移除內嵌 <style>，相關導覽列樣式已移至 static/css/index.css -->
-</head>
-=======
-    <!-- 模板樣式 -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}?v=1">
-    <!-- 客製樣式 -->
-    {% block custom_css %}{% endblock %}
-</head>
-
->>>>>>> 3ec8829d9406606a570eb7bce9756ae249839fdb
->>>>>>> 2d6d9caa04d49514e0d6805b3495eaccc9b46aa0
 <body>
     <!-- 導覽列 -->
     <nav class="navbar">
         <div class="container">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 2d6d9caa04d49514e0d6805b3495eaccc9b46aa0
-            <a class="navbar-brand" href="#">職能發展學院</a>
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="#" class="active">首頁1</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">課程內容</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">關於我們</a>
-<<<<<<< HEAD
-=======
-=======
             <a class="navbar-brand" href="{{ url_for('index') }}">職能發展學院</a>
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="{{ url_for('index') }}" {% if request.endpoint=='index' %}class="active" {% endif
-                        %}>機器學習</a>
+                    <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="active"{% endif %}>機器學習</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{url_for('regression')}}" {% if request.endpoint=='regression' %}class="active" {% endif
-                        %}>線性迴歸</a>
+                    <a href="{{url_for('regression')}}" {% if request.endpoint == 'regression' %}class="active"{% endif %}>線性迴歸</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('knn') }}" {% if request.endpoint=='knn' %}class="active" {% endif %}>k近鄰分類</a>
-                </li>
-                <!-- ***作業任務 3：更新導覽列*** -->
-                <li class="nav-item">
-                    <a href="{{ url_for('decision_tree') }}" {% if request.endpoint=='knn' %}class="active" {% endif
-                        %}>決策樹分類</a>
->>>>>>> 3ec8829d9406606a570eb7bce9756ae249839fdb
->>>>>>> 2d6d9caa04d49514e0d6805b3495eaccc9b46aa0
+                    <a href="{{ url_for('knn') }}" {% if request.endpoint == 'knn' %}class="active"{% endif %}>k近鄰分類</a>
                 </li>
             </ul>
             <!-- 手機版導覽切換按鈕 -->
@@ -98,11 +50,4 @@
     <!-- 載入手機版導覽的行為腳本 -->
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 3ec8829d9406606a570eb7bce9756ae249839fdb
->>>>>>> 2d6d9caa04d49514e0d6805b3495eaccc9b46aa0
 </html>

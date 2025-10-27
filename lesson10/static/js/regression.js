@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function loadRegressionData(){
     showLoading(true);
+    fetch('/api/regression/data1')
+    .then(response => {
+        console.log(response)
+    }).catch(error => {
+        console.log(error)
+    });
 };
 
 function showLoading(show){

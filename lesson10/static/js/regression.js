@@ -109,6 +109,17 @@ function renderChart(data) {
                         weight: 'bold'
                     },
                     padding: 20
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            console.table(context)
+                            const datasetLabel = context.dataset.label || '';
+                            const xValue = context.parsed.x.toFixed(2);
+                            const yValue = context.parsed.y.toFixed(2);
+                            return `${datasetLabel}: (${xValue}, ${yValue})`;
+                        }
+                    }
                 }
             },
             animation: {

@@ -103,7 +103,7 @@ function renderChart(data) {
             plugins: {
                 title: {
                     display: true,
-                    text: '平均方間數 vs 房價',
+                    text: '平均房間數 vs 房價',
                     font: {
                         size: 18,
                         weight: 'bold'
@@ -113,11 +113,16 @@ function renderChart(data) {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            console.table(context)
                             const datasetLabel = context.dataset.label || '';
                             const xValue = context.parsed.x.toFixed(2);
                             const yValue = context.parsed.y.toFixed(2);
-                            return `${datasetLabel}: (${xValue}, ${yValue})`;
+                            return `${datasetLabel}: (平均房間數:${xValue}, 房價:${yValue})`;                            
+                        },
+                        afterLabel:function(context){
+                            if(context.datasetIndex === 0 || context.datasetIndex === 1){
+                                return '點擊可預測此資料點';
+                            }
+                            return '';
                         }
                     }
                 }

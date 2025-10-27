@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
 async function loadRegressionData(){
     showLoading(true);
     try{
-        const response = await fetch('/api/regression/data1')
+        const response = await fetch('/api/regression/data')
         if(!response.ok){
             throw new Error(`網路出現問題:${response.statusText}`)
         }
@@ -18,11 +18,9 @@ async function loadRegressionData(){
         if(!data.success){
             throw new Error(`解析josn失敗`);
         }            
-        
-        console.log("下載成功")
         modelData = data
     }catch(error){
-        console.log(error)
+        showError(error.message);
     }finally{
         showLoading(false);
     }
@@ -37,3 +35,8 @@ function showLoading(show){
     loading.classList.remove('active');
   }
 };
+
+function showError(message){
+    alert('錯誤:' + message);
+    console.log(message)
+}

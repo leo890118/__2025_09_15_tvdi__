@@ -38,15 +38,31 @@ function renderChart(data){
     if(chart){
         chart.destroy();
     }
-
     //準備訓練資料集
-    const trainData = data.data.train.x.map(xvalue,index => {
+    const trainData = data.data.train.x.map((xvalue,index) => 
         ({
             x:xvalue,
             y:data.data.train.y[index]
         })
-    })
-    console.table(trainData)
+    )
+    
+    //準備測試資料集
+    const testData = data.data.test.x.map((xvalue, index) =>
+        ({
+            x:xvalue,
+            y:data.data.test.y[index]
+        })
+    )
+
+    //準備迴歸線資料集
+    const regressionLine = data.data.regression_line.x.map((xvalue, index) => 
+        (
+            {
+                x:xvalue,
+                y:data.data.regression_line.y[index]
+            }
+        )
+    )
 }
 
 function showLoading(show){

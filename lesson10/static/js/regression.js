@@ -8,9 +8,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function loadRegressionData(){
     showLoading(true);
-    fetch('/api/regression/data1')
+    fetch('/api/regression/data')
     .then(response => {
-        console.log(response)
+        if(response.ok){
+            console.log("已經下載完成");
+            response.json().then(data=>{
+                console.log(data)
+            }).catch(error=>{
+                console.log(error)
+            })
+        }
     }).catch(error => {
         console.log(error)
     });

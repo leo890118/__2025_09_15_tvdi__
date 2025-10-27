@@ -6,22 +6,27 @@ document.addEventListener('DOMContentLoaded', function(){
     loadRegressionData();
 });
 
-function loadRegressionData(){
+async function loadRegressionData(){
     showLoading(true);
-    fetch('/api/regression/data')
-    .then(response => {
-        if(!response.ok){         
-            throw new Error("網路回應有錯誤:" + response.statusText);
+    try{
+        const response = await fetch('/api/regression/data1')
+        if(!response.ok){
+            throw new Error(`網路出現問題:${response.statusText}`)
         }
+        const data = await response.json()
 
-        return response.json()
-
-    }).then(data=>{
-        console.log("完整取得資料");
-        console.log(data);
-    }).catch(error => {
-        console.log(error);
-    });
+        if(!data.success){
+            throw new Error(`解析josn失敗`);
+        }            
+        
+        console.log("下載成功")
+        modelData = data
+    }catch(error){
+        console.log(error)
+    }finally{
+        showLoading(false);
+    }
+    
 };
 
 function showLoading(show){

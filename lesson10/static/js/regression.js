@@ -63,6 +63,73 @@ function renderChart(data){
             }
         )
     )
+
+    //建立圖表
+    chart = new Chart(ctx,{
+        type: 'scatter',
+        data: {
+            datasets: [
+                {
+                   label: '訓練資料',
+                   data: trainData,
+                   backgroundColor: 'rgba(102, 126, 234, 0.6)',
+                   borderColor: 'rgba(102, 126, 234, 1)',
+                   pointRadius:6,
+                   pointHoverRadius: 8
+                },
+                {
+                   label: '測試資料',
+                   data: testData,
+                   backgroundColor: 'rgba(237, 100, 166, 0.6)',
+                   borderColor: 'rgba(237, 100, 166, 1)',
+                   pointRadius:6,
+                   pointHoverRadius: 8
+                },
+                {
+                   label: '迴歸線',
+                   data: regressionLine,
+                   type: 'line',
+                   borderColor: '#f59e0b',
+                   borderWidth: 3,
+                   fill: false,
+                   pointRadius: 0,
+                   tension: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio:false,
+            scales: {
+                x: {
+                    title:{
+                        display: true,
+                        text: `${data.description.feature_name} (${data.description.feature_unit})`,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                y: {
+                    title:{
+                        display: true,
+                        text: `${data.description.target_name} (${data.description.target_unit})`,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    })
 }
 
 function showLoading(show){

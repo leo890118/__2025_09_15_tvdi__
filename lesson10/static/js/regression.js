@@ -111,6 +111,10 @@ function renderChart(data) {
                     padding: 20
                 }
             },
+            animation: {
+              duration: 1000,
+              easing: 'easeInOutQuart'  
+            },
             scales: {
                 x: {
                     title: {

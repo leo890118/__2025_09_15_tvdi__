@@ -40,9 +40,13 @@ function renderChart(data){
     }
 
     //準備訓練資料集
-    console.log(data.data.train.x.map(function(xvalue){
-        return {x:xvalue}
-    })[0])
+    const trainData = data.data.train.x.map(xvalue,index => {
+        ({
+            x:xvalue,
+            y:data.data.train.y[index]
+        })
+    })
+    console.table(trainData)
 }
 
 function showLoading(show){

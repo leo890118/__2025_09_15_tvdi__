@@ -10,16 +10,17 @@ function loadRegressionData(){
     showLoading(true);
     fetch('/api/regression/data')
     .then(response => {
-        if(response.ok){
-            console.log("已經下載完成");
-            response.json().then(data=>{
-                console.log(data)
-            }).catch(error=>{
-                console.log(error)
-            })
+        if(!response.ok){         
+            throw new Error("網路回應有錯誤:" + response.statusText);
         }
+
+        return response.json()
+
+    }).then(data=>{
+        console.log("完整取得資料");
+        console.log(data);
     }).catch(error => {
-        console.log(error)
+        console.log(error);
     });
 };
 

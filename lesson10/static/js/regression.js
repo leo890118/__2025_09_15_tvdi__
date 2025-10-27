@@ -19,6 +19,10 @@ async function loadRegressionData(){
             throw new Error(`解析josn失敗`);
         }            
         modelData = data
+        
+        // 繪制圖表
+        renderChart(data)
+
     }catch(error){
         showError(error.message);
     }finally{
@@ -26,6 +30,19 @@ async function loadRegressionData(){
     }
     
 };
+
+function renderChart(data){
+    const ctx = document.getElementById('regressionChart').getContext('2d')
+
+    // 如果圖表已經存在,先銷毀
+    if(chart){
+        chart.destroy();
+    }
+
+    //準備訓練資料集
+    console.log(data.data.train.x)
+    console.log(data.data.train.y)
+}
 
 function showLoading(show){
   const loading = document.getElementById('loading');

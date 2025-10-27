@@ -100,6 +100,25 @@ function renderChart(data) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            onClick: function(evt, activeElements){
+                if(activeElements.length > 0){
+                    const element = activeElements[0]
+                    const datasetIndex = element.datasetIndex
+                    const index = element.index
+                    const dataset = chart.data.datasets[datasetIndex]
+                    console.table(dataset)
+
+                    if(datasetIndex === 0 || datasetIndex === 1){ //訓練或測試資料
+                        const point = dataset.data[index]
+                        const rooms = point.x
+                        
+                        //更新輸入框
+                        document.getElementById('rooms-input').value = rooms.toFixed(1)
+                        predictPrice(rooms)
+
+                    }
+                }
+            },
             plugins: {
                 title: {
                     display: true,
@@ -161,6 +180,10 @@ function renderChart(data) {
             }
         }
     })
+}
+
+function predictPrice(rooms){
+    console.log('rooms:',rooms)
 }
 
 function showLoading(show) {

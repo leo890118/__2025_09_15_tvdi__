@@ -7,5 +7,14 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function loadRegressionData(){
-    console.log("loadRegressionData被執行");
-}
+    showLoading(true);
+};
+
+function showLoading(show){
+  const loading = document.getElementById('loading');
+  if(show){
+    loading.classList.add('active');
+  }else{
+    loading.classList.remove('active');
+  }
+};

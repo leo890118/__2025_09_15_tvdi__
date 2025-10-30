@@ -186,9 +186,19 @@ async function predictPrice(rooms){
         alert('請輸入有效的房間數(1~15間)')
         return;
     }
-
-    const response = await fetch(`/api/regression/predict?rooms=${rooms}`)
-    console.table(response)
+    try{
+        const response = await fetch(`/api/regression/predict?rooms=${rooms}`)
+        const data = await response.json()
+        if(data.success){
+            //更新預測結果
+            document.getElementById('predicted-price').textContent = data.prediction.price;
+        }else{
+            showError(data.error);
+        }
+    } catch(error){
+        showError('預測失敗:' + error.message)
+    }
+    
 }
 
 function showLoading(show) {

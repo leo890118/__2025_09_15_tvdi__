@@ -124,7 +124,16 @@ def regression_data():
 @app.route("/api/regression/predict")
 def regression_predict():
     """線性迴歸預測 API - 根據房間數預測房價"""
-    print(request.args.get('rooms',5))
+    # 取得使用者輸入的房間數
+    rooms = float(request.args.get('rooms', 5))
+
+    # 載入資料並訓練模型
+    housing = fetch_california_housing()
+    sample_size = 200
+    feature_idx = 2
+    X = housing.data[:sample_size,feature_idx].reshape(-1,1).shape #特徵
+    y = housing.target[:sample_size] * 10 # 房價(萬美金) #標籤
+
     response = {
         "success": True,
         "prediction":{

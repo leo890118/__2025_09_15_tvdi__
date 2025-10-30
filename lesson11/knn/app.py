@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template,jsonify
 
 knn_bp = Blueprint(
     'knn',
@@ -11,3 +11,11 @@ knn_bp = Blueprint(
 @knn_bp.route('/knn_index')
 def knn_index():
     return render_template('knn.html')
+
+@knn_bp.route('/api/data')
+def knn_data():
+    return jsonify(
+        {
+            'success': True
+        }
+    )

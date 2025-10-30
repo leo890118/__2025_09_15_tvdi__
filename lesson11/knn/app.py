@@ -1,4 +1,5 @@
 from flask import Blueprint,render_template,jsonify
+from sklearn.datasets import load_iris
 
 knn_bp = Blueprint(
     'knn',
@@ -14,6 +15,9 @@ def knn_index():
 
 @knn_bp.route('/api/data')
 def knn_data():
+    """knn 分類 API - 使用鳶尾花資料集"""
+    iris = load_iris()
+    print(iris)
     return jsonify(
         {
             'success': True

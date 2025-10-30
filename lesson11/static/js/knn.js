@@ -5,5 +5,14 @@ document.addEventListener('DOMContentLoaded',function(){
 })
 
 function loadKnnData(){
-    console.log("loadKnnData")
+    showLoading(true);
+}
+
+function showLoading(show){
+    const loading = document.getElementById('loading');
+    if(show){
+        loading.classList.add('active')
+    }else{
+        loading.classList.remove('active')
+    }
 }

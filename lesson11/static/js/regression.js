@@ -37,6 +37,9 @@ async function loadRegressionData() {
         // 繪制圖表
         renderChart(data)
 
+        // 更新評估指標
+        updateMetrics(data.metrics)
+
     } catch (error) {
         showError(error.message);
     } finally {
@@ -236,6 +239,24 @@ function addPredictionPoint(x, y){
 
     chart.data.datasets = existingDatasets;
     chart.update();
+}
+
+function updateMetrics(metrics){
+    document.getElementById('r2-score').textContent = metrics.r2_score;
+    document.getElementById('mse').textContent = metrics.mse;
+    document.getElementById('rmse').textContent = metrics.rmse;
+    document.getElementById('coefficient').textContent = metrics.coefficient;
+
+    //R² 分數顏色提示
+    const r2Element = document.getElementById('r2-score')
+    const r2Value = metrics.r2_score;
+    if(r2Value > 0.7){
+        r2Element.style.color = '#4caf50';
+    }else if(r2Value > 0.4){
+        r2Element.style.color = '#ff9800';
+    }else{
+        r2Element.style.color = '#f44336';
+    }
 }
 
 function showLoading(show) {

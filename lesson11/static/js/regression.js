@@ -192,6 +192,11 @@ async function predictPrice(rooms){
         if(data.success){
             //更新預測結果
             document.getElementById('predicted-price').textContent = data.prediction.price;
+
+            //在圖表上顯示預測點
+            if(chart && modelData){
+                addPredictionPoint(rooms, data.prediction.price)
+            }
         }else{
             showError(data.error);
         }
@@ -199,6 +204,10 @@ async function predictPrice(rooms){
         showError('預測失敗:' + error.message)
     }
     
+}
+
+function addPredictionPoint(x, y){
+    console.log(x, y)
 }
 
 function showLoading(show) {

@@ -262,9 +262,13 @@ function updateMetrics(metrics){
     }
 }
 
-function updateModelInfo(info){
-    console.table(info)
-
+function updateModelInfo(description){
+    console.table(description)
+    document.getElementById('dataset-name').textContent = description.dataset
+    document.getElementById('total-samples').textContent = description.samples
+    document.getElementById('train-size').textContent = description.train_size
+    document.getElementById('test-size').textContent = description.test_size
+    document.getElementById('target-name').textContent = description.target_name
 }
 
 function showLoading(show) {

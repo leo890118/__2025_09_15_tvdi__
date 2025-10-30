@@ -2,6 +2,15 @@
 
 {% block title %}職能發展學院-k近鄰分類{% endblock %}
 
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/knn.css') }}">
+{% endblock%}
+
 {% block content %}
 <h1>k近鄰分類</h1>
+{% endblock %}
+
+{% block code%}
+<script href="{{url_for('static',filename='js/knn.js')}}"></script>
 {% endblock %}

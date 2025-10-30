@@ -207,7 +207,22 @@ async function predictPrice(rooms){
 }
 
 function addPredictionPoint(x, y){
-    console.log(x, y)
+    console.table(chart.data.datasets)
+    // 移除之前的預測點
+    const existingDatasets = chart.data.datasets.filter(ds => ds.label !== '您的預測')
+    existingDatasets.push({
+        label: '您的預測',
+        data: [{x:x,y:y}],
+        backgroundColor: '#ffc107',
+        borderColor: '#ff9800',
+        pointRadius: 12,
+        pointHoverRadius: 15,
+        pointStyle: 'star',
+        borderWidth: 3
+    })
+
+    chart.data.datasets = existingDatasets;
+    chart.update();
 }
 
 function showLoading(show) {

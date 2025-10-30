@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const rooms = parseFloat(document.getElementById('rooms-input').value)
         predictPrice(rooms)
     })
+
+    //綁定Enter鍵觸發預測
+    document.getElementById('rooms-input').addEventListener('keypress',function(e){
+        if(e.key === "Enter"){
+            const rooms = parseFloat(this.value)
+            predictPrice(rooms)
+        }
+    })
 });
 
 async function loadRegressionData() {

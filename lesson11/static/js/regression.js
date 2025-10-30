@@ -40,6 +40,9 @@ async function loadRegressionData() {
         // 更新評估指標
         updateMetrics(data.metrics)
 
+        // 更新模型資訊
+        updateModelInfo(data.description)
+
     } catch (error) {
         showError(error.message);
     } finally {
@@ -257,6 +260,11 @@ function updateMetrics(metrics){
     }else{
         r2Element.style.color = '#f44336';
     }
+}
+
+function updateModelInfo(info){
+    console.table(info)
+
 }
 
 function showLoading(show) {

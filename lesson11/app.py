@@ -131,14 +131,32 @@ def regression_predict():
     housing = fetch_california_housing()
     sample_size = 200
     feature_idx = 2
-    X = housing.data[:sample_size,feature_idx].reshape(-1,1).shape #特徵
+    X = housing.data[:sample_size,feature_idx].reshape(-1,1) #特徵
     y = housing.target[:sample_size] * 10 # 房價(萬美金) #標籤
+
+    # 訓練模型
+    model = LinearRegression()
+    model.fit(X, y)
+
+    # 預測
+    X_input = np.array([[rooms]])
+    predicted_price = model.predict(X_input)[0]
+    print(predicted_price)
 
     response = {
         "success": True,
-        "prediction":{
-            "price": 100,
+        "input": {
+            "rooms": rooms,
+            "unit" : "間"
+        },
+        "prediction": {
+            "price": round(predicted_price, 2),
             "unit": "萬美元"
+        },
+        "formula":{
+            "coefficient": round(model.coef_[0],2),
+            "intercept": round(model.intercept_, 2),
+            "equation": f"房價={round(model.coef_[0],2)} x 房間數 + {round(model.intercept_, 2)}"
         }
     }
     return jsonify(response)

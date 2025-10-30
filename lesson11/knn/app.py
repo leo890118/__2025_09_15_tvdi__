@@ -4,7 +4,8 @@ knn_bp = Blueprint(
     'knn',
     __name__,
     url_prefix='/knn',
-    template_folder='../templates'
+    template_folder='../templates',
+    static_folder='../static'
 )
 
 @knn_bp.route('/knn_index')

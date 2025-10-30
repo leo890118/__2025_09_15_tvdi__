@@ -4,6 +4,12 @@ let modelData = null; //儲存模型資料
 // 頁面戴入完成後才執行
 document.addEventListener('DOMContentLoaded', function () {
     loadRegressionData();
+
+    //綁定預測按鈕事件
+    document.getElementById('predict-btn').addEventListener('click',function(){
+        const rooms = parseFloat(document.getElementById('rooms-input').value)
+        predictPrice(rooms)
+    })
 });
 
 async function loadRegressionData() {
@@ -207,7 +213,6 @@ async function predictPrice(rooms){
 }
 
 function addPredictionPoint(x, y){
-    console.table(chart.data.datasets)
     // 移除之前的預測點
     const existingDatasets = chart.data.datasets.filter(ds => ds.label !== '您的預測')
     existingDatasets.push({

@@ -40,6 +40,16 @@ async function loadKnnData(){
 function renderChart(data){
     console.table(modelData)
     console.log(chart)
+    //取得canvas的context
+    const ctx = document.getElementById("knnChart").getContext('2d')
+
+
+    //如果圖表已經存在,先銷毀
+    if(chart){
+        chart.destroy()
+    }
+
+    // 準備資料集 - 按類別分組
 }
 
 // 顯示/隱藏載入狀態

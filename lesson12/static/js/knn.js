@@ -135,6 +135,7 @@ function renderChart(data){
     
     // 建立圖表
     
+    
 }
 
 // 顯示/隱藏載入狀態

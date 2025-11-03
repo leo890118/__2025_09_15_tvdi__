@@ -1,5 +1,8 @@
 from flask import Blueprint,render_template,jsonify,request
 from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 knn_bp = Blueprint(
     'knn',
@@ -41,7 +44,29 @@ def knn_data():
     if k_neighbors < 1 or k_neighbors > 20:
         k_neighbors = 5
 
-    
+    # 使用兩個特徵進行分類
+    X_2d = X[:,[feature_x, feature_y]]
+
+    # 分割訓練和測試資料
+    X_train, X_test, y_train, y_test = train_test_split(X_2d, y, test_size=0.3, random_state=42)
+
+    # 訓練 KNN 分類器
+    knn = KNeighborsClassifier(n_neighbors=k_neighbors)
+    knn.fit(X_train, y_train)
+
+    # 預測
+    y_pred = knn.predict(X_test)
+
+    # 計算評估指標
+    accuracy = accuracy_score(y_test, y_pred)
+    conf_matric = confusion_matrix(y_test, y_pred)
+
+    print(f'accuracy:{accuracy}')
+    print(f'conf_matric:{conf_matric}')
+
+
+
+
     
     
 

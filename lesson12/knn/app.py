@@ -61,17 +61,43 @@ def knn_data():
     accuracy = accuracy_score(y_test, y_pred)
     conf_matric = confusion_matrix(y_test, y_pred)
 
-    print(f'accuracy:{accuracy}')
-    print(f'conf_matric:{conf_matric}')
-
-
-
-
-    
-    
-
-    return jsonify(
-        {
-            'success': True
+    # 準備回應資料
+    response = {
+        "success":True,
+        "feature_names": feature_names_zh,
+        "target_names": target_names_zh,
+        "current_features":{
+            "x": feature_names_zh[feature_x],
+            "y": feature_names_zh[feature_y],
+            "x_idx": feature_x,
+            "y_idx": feature_y
+        },
+        "k_neighbors": k_neighbors,
+        "data":{
+            "train":{
+                "x": X_train[:, 0].tolist(),
+                "y": X_train[:, 1].tolist(),
+                "labels": y_train.tolist()
+            },
+            "test":{
+                "x": X_test[:, 0].tolist(),
+                "y": X_test[:, 1].tolist(),
+                "labels": y_test.tolist(),
+                "predictions": y_pred.tolist()
+            }
+        },
+        "metrics":{
+            "accuracy": round(accuracy,4),
+            "confusion_matric": conf_matric.tolist()
+        },
+        "description":{
+            "dataset": "鳶尾花資料集",
+            "samples": len(y),
+            "train_size": len(y_train),
+            "test_size": len(y_test),
+            "classes": len(target_names_zh)
         }
-    )
+    }
+    
+
+    return jsonify(response)

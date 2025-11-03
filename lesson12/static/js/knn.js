@@ -134,7 +134,69 @@ function renderChart(data){
 
     
     // 建立圖表
-    
+    chart = new Chart(ctx,{
+        type: 'scatter',
+        data: { datasets: datasets},
+        options:{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins:{
+                title:{
+                    display: true,
+                    text: `KNN 分類視覺化(k=${data.k_neighbors})`,
+                    font:{
+                        size: 18,
+                        weight: 'bold'
+                    },
+                    padding:20
+                },
+                legend:{
+                    display: true,
+                    position: 'top',
+                    labels:{
+                        usePointStyle: true,
+                        padding: 12,
+                        font:{
+                            size: 11
+                        }
+                    }
+                }
+            },
+            scales:{
+                x:{
+                    title:{
+                        display: true,
+                        text: `${data.feature_names[2]}(cm)`,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(0,0,0,0.05)'
+                    }
+                },
+                y:{
+                    title:{
+                        display: true,
+                        text: `${data.feature_names[3]}(cm)`,
+                        font:{
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    },
+                    grid:{
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            },
+            animation:{
+                duration: 800,
+                easing: 'easeInOutQuart'
+            }
+        }
+    })
+
     
 }
 

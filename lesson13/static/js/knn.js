@@ -134,7 +134,6 @@ function renderChart(data){
 
     
     // 建立圖表
-    debugger;
     chart = new Chart(ctx,{
         type: 'scatter',
         data: { datasets: datasets},

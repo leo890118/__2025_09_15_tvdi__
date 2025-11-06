@@ -94,3 +94,8 @@ https://meet.google.com/xxv-awvt-ies
 https://www.youtube.com/watch?v=cKklDrGLHCY
 
 ---
+
+## 2025_11_06_早上
+https://www.youtube.com/watch?v=lelfzfLMFbY
+
+---
